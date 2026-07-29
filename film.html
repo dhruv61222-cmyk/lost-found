@@ -515,7 +515,7 @@ body{
 
 <section>
 
-<h2 class="title">Behind The Scenes</h2>
+<h2 class="title">Short Films</h2>
 
 <div class="gallery">
 
@@ -523,7 +523,7 @@ body{
 
     <div class="video-container">
         <iframe
-            src="https://www.youtube.com/embed/dF2FQRVX_js"
+            src="https://www.youtube.com/embed/dF2FQRVX_jsapi=1"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -542,7 +542,7 @@ body{
 
     <div class="video-container">
         <iframe
-            src="https://www.youtube.com/embed/lrc6vaf2vA4"
+            src="https://www.youtube.com/embed/lrc6vaf2vA4api=1"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -560,7 +560,7 @@ body{
 
     <div class="video-container">
         <iframe
-            src="https://www.youtube.com/embed/XzLI9VB2oMM"
+            src="https://www.youtube.com/embed/XzLI9VB2oMMapi=1"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -579,7 +579,7 @@ body{
 
     <div class="video-container">
         <iframe
-            src="https://www.youtube.com/embed/GQURVUWvmYU"
+            src="https://www.youtube.com/embed/GQURVUWvmYUapi=1"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -598,7 +598,7 @@ body{
 
     <div class="video-container">
         <iframe
-            src="https://www.youtube.com/embed/oGJPhQUNp4o"
+            src="https://www.youtube.com/embed/oGJPhQUNp4oapi=1"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -650,6 +650,44 @@ videos.forEach(video => {
 });
 </script>
 <script src="script.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 
+<script>
+let players = [];
+
+function onYouTubeIframeAPIReady() {
+
+    document.querySelectorAll(".video-container iframe").forEach((iframe, index) => {
+
+        iframe.id = "ytplayer" + index;
+
+        players.push(new YT.Player(iframe.id, {
+            events: {
+                onStateChange: onPlayerStateChange
+            }
+        }));
+
+    });
+
+}
+
+function onPlayerStateChange(event) {
+
+    if (event.data === YT.PlayerState.PLAYING) {
+
+        players.forEach(player => {
+
+            if (player !== event.target) {
+
+                player.pauseVideo();
+
+            }
+
+        });
+
+    }
+
+}
+</script>
 </body>
 </html>
