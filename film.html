@@ -167,6 +167,20 @@ display:block;
 
 }
 
+.video-container{
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border-radius:20px 20px 0 0;
+}
+
+.video-container iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    display:block;
+}
+
 .info{
 padding:25px;
 }
@@ -401,17 +415,25 @@ body{
 
 <div class="card">
 
-<img src="film1.jpg">
+    <div class="video-container">
+        <iframe
+            src="https://www.youtube.com/embed/dF2FQRVX_js"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
 
-<div class="info">
+    <div class="info">
 
-<h2>Echoes</h2>
+        <h2>Echoes</h2>
 
-<p>
-Lead Actor • Drama • 2026
-</p>
+        <p>
+            Lead Actor • Drama • 2026
+        </p>
 
-</div>
+    </div>
 
 </div>
 
