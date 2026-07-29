@@ -590,11 +590,12 @@ body.page-exit{
     font-size:70px;
     margin-bottom:30px;
 }
-
 .about-content p{
     font-size:22px;
     line-height:1.8;
     color:#bbb;
+    text-align:justify;
+    text-justify:inter-word;
 }
 
 .about-stats{
@@ -644,6 +645,8 @@ body.page-exit{
     font-size:20px;
     line-height:1.8;
     color:#bdbdbd;
+    text-align:justify;
+    text-justify:inter-word;
 }
 
 .contact-info{
@@ -738,12 +741,13 @@ opacity:.6;
         margin-bottom:20px;
     }
 
-    .about-content p,
-    .contact-content p{
-        font-size:16px;
-        line-height:1.8;
-        text-align:left;
-    }
+.about-content p,
+.contact-content p{
+    font-size:16px;
+    line-height:1.8;
+    text-align:justify;
+    text-justify:inter-word;
+}
 
     /* Stats */
 
