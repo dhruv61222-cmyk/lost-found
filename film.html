@@ -398,6 +398,100 @@ body{
     z-index:2;
 }
 
+/*==================================================
+PRODUCT PHOTOSHOOT
+==================================================*/
+
+.photoshoot{
+    padding:100px 8%;
+}
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.photo-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    background:#111;
+    cursor:pointer;
+
+    opacity:0;
+    transform:translateY(80px) scale(.9);
+
+    transition:
+        transform .8s ease,
+        opacity .8s ease;
+}
+
+.photo-card.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.photo-card img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    display:block;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.photo-card:hover img{
+    transform:scale(1.08);
+    filter:brightness(.85);
+}
+
+/* Dark overlay */
+
+.photo-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.45),
+        transparent 60%
+    );
+
+    opacity:0;
+
+    transition:.5s;
+
+}
+
+.photo-card:hover::after{
+    opacity:1;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .photo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .photo-card img{
+
+        height:340px;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -426,8 +520,8 @@ body{
     <h1>FILMS</h1>
 
     <p>
-    Cinema is where stories become timeless.<br>
-    Every frame tells an emotion.
+    "Cinema is where stories become timeless."<br>
+    "Every frame tells an emotion."
     </p>
 </div>
 
@@ -438,6 +532,37 @@ body{
 
 </header>
 
+
+
+<section>
+
+<h2 class="title">Career Highlights</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h3>12</h3>
+<p>Films Completed</p>
+</div>
+
+<div class="stat">
+<h3>08</h3>
+<p>Film Festivals</p>
+</div>
+
+<div class="stat">
+<h3>05</h3>
+<p>Awards Won</p>
+</div>
+
+<div class="stat">
+<h3>150K+</h3>
+<p>Audience Reach</p>
+</div>
+
+</div>
+
+</section>
 <section>
 
 <h2 class="title">Advertisements</h2>
@@ -481,36 +606,6 @@ body{
     </div>
 
 </div>
-</section>
-
-<section>
-
-<h2 class="title">Career Highlights</h2>
-
-<div class="stats">
-
-<div class="stat">
-<h3>12</h3>
-<p>Films Completed</p>
-</div>
-
-<div class="stat">
-<h3>08</h3>
-<p>Film Festivals</p>
-</div>
-
-<div class="stat">
-<h3>05</h3>
-<p>Awards Won</p>
-</div>
-
-<div class="stat">
-<h3>150K+</h3>
-<p>Audience Reach</p>
-</div>
-
-</div>
-
 </section>
 
 <section>
@@ -589,7 +684,7 @@ body{
 
     <div class="info">
 
-        <h2>Documentry</h2>
+        <h2>Emergency</h2>
 
     </div>
 
@@ -612,6 +707,162 @@ body{
     </div>
 
 </div>
+</section>
+
+<section>
+
+<h2 class="title">Documentation</h2>
+
+<div class="grid">
+
+<div class="card">
+
+    <video class="film-video" controls preload="metadata" poster="shadi.com-thumbnail.png">
+    <source src="shadi.com.mp4" type="video/mp4">
+</video>
+
+    <div class="info">
+        <h2>SHAADI.COM</h2>
+        <p>Music Video • 2026</p>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <video class="film-video" controls preload="metadata" poster="beardo.jpeg">
+    <source src="beardo.mp4" type="video/mp4">
+</video>
+
+    <div class="info">
+        <h2>BEARDO</h2>
+        <p>Music Video • 2026</p>
+    </div>
+
+</div>
+<div class="card">
+
+   <video class="film-video" controls preload="metadata" poster="nooree.jpeg">
+    <source src="nooree.mp4" type="video/mp4">
+</video>
+
+    <div class="info">
+        <h2>NOOREE</h2>
+        <p>Music Video • 2026</p>
+    </div>
+
+</div>
+</section>
+
+<!-- Paste Product Photoshoot section here -->
+
+<section class="photoshoot">
+
+<h2 class="title">Product Photoshoot</h2>
+
+<div class="photo-grid">
+
+    <div class="photo-card">
+        <img src="photo1.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo2.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo3.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo4.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo5.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo6.jpeg" alt="">
+    </div>
+
+
+    <div class="photo-card">
+        <img src="photo8.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo9.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="photo11.jpeg" alt="">
+    </div>
+
+
+</div>
+
+</section>
+<section class="photoshoot">
+
+<h2 class="title">Poster Designs</h2>
+
+<div class="photo-grid">
+
+    <div class="photo-card">
+        <img src="images/poster1.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/poster2.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/poster3.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/poster4.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/poster5.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/poster6.png" alt="">
+    </div>
+
+
+</div>
+
+</section>
+
+<section class="photoshoot">
+
+<h2 class="title">Fashion Photography</h2>
+
+<div class="photo-grid">
+
+    <div class="photo-card">
+        <img src="images/Fphoto1.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/Fphoto2.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/Fphoto3.jpeg" alt="">
+    </div>
+
+    <div class="photo-card">
+        <img src="images/Fphoto4.jpeg" alt="">
+    </div>
+
+
+</div>
+
 </section>
 
 <footer>
@@ -649,7 +900,8 @@ videos.forEach(video => {
 
 });
 </script>
-<script src="script.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
@@ -688,6 +940,28 @@ function onPlayerStateChange(event) {
     }
 
 }
+
+const photoCards = document.querySelectorAll(".photo-card");
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+photoCards.forEach(card=>observer.observe(card));
 </script>
+<script src="script.js"></script>
+
 </body>
 </html>
