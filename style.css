@@ -392,23 +392,26 @@ body{
     top:50%;
     transform:translateY(-50%);
 
+    width:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     font-size:clamp(30px,6vw,70px);
     font-weight:700;
+    line-height:1;
 
-    color:rgba(246,240,240,0.47);
-
-    transition:all .4s ease;
+    color:rgba(246,240,240,.47);
+    transition:.4s;
 }
 
-/* Normal position */
 .left-arrow{
-    left:50px;
+    left:calc(50% - 320px);
 }
 
 .right-arrow{
-    right:50px;
+    right:calc(50% - 320px);
 }
-
 /* Hover */
 .left:hover .left-arrow{
     color:#000;
@@ -501,13 +504,13 @@ body.page-exit{
 .logo{
     position:fixed;
     top:25px;          /* Space from top */
-    left:50%;
+    left:10%;
     transform:translateX(-50%);
     z-index:1000;
 }
 
 .logo img{
-    width:140px;       /* Change size if needed */
+    width:60px;       /* Change size if needed */
     height:auto;
     display:block;
 }
