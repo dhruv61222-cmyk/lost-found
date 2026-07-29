@@ -242,3 +242,66 @@ film.addEventListener("click", function(e){
     },900);
 
 });
+
+const videos = document.querySelectorAll(".film-video");
+
+videos.forEach(video => {
+    video.addEventListener("click", () => {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+});
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+
+    const video = wrapper.querySelector("video");
+    const btn = wrapper.querySelector(".play-btn");
+
+    btn.addEventListener("click", () => {
+        video.play();
+        btn.style.display = "none";
+    });
+
+    video.addEventListener("pause", () => {
+        btn.style.display = "block";
+    });
+
+    video.addEventListener("ended", () => {
+        btn.style.display = "block";
+    });
+
+});
+
+function openVideo(src){
+
+    const modal=document.getElementById("videoModal");
+    const video=document.getElementById("myVideo");
+    const source=document.getElementById("videoSource");
+
+    source.src=src;
+
+    video.load();
+
+    modal.style.display="flex";
+
+}
+
+function closeVideo(){
+
+    document.getElementById("myVideo").pause();
+
+    document.getElementById("videoModal").style.display="none";
+
+}
+
+document.getElementById("videoModal").onclick=function(e){
+
+    if(e.target===this){
+
+        closeVideo();
+
+    }
+
+}

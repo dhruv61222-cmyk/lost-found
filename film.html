@@ -153,18 +153,13 @@ border:1px solid #ddd;
 transform:translateY(-15px);
 }
 
-.card img{
-
-width:100%;
-
-aspect-ratio:4/5;
-
-height:auto;
-
-object-fit:cover;
-
-display:block;
-
+.card video{
+    width:100%;
+    aspect-ratio:9/16;   /* Use 16/9 if your video is horizontal */
+    object-fit:cover;
+    display:block;
+    border-radius:20px 20px 0 0;
+    background:#000;
 }
 
 .video-container{
@@ -367,9 +362,54 @@ body{
     }
 }
 
+.video-wrapper{
+    position:relative;
+    width:100%;
+    aspect-ratio:9/16;      /* Reel style */
+    overflow:hidden;
+    border-radius:20px 20px 0 0;
+    background:#000;
+}
+
+.video-wrapper img,
+.video-wrapper video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.film-video{
+    display:none;
+}
+
+.play-btn{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    z-index:2;
+}
+
 </style>
 
 </head>
+<div id="videoModal">
+
+    <button onclick="closeVideo()" class="close-btn">✕</button>
+
+    <video id="myVideo" controls autoplay>
+        <source id="videoSource" src="">
+    </video>
+
+</div>
 
 <body class="dark">
     
@@ -409,68 +449,62 @@ body{
 
 <section>
 
-<h2 class="title">Featured Films</h2>
+<h2 class="title">Advertisements</h2>
 
 <div class="grid">
 
 <div class="card">
 
-    <div class="video-container">
-        <iframe
-            src="https://www.youtube.com/embed/dF2FQRVX_js"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
-    </div>
+    <video
+        controls
+        preload="metadata"
+        poster="shadi.com-thumbnail.png">
+
+        <source src="shadi.com.mp4" type="video/mp4">
+
+    </video>
 
     <div class="info">
-
-        <h2>Echoes</h2>
-
-        <p>
-            Lead Actor • Drama • 2026
-        </p>
-
+        <h2>SHAADI.COM</h2>
+        <p>Music Video • 2026</p>
     </div>
 
 </div>
 
 <div class="card">
 
-<img src="film1.jpg">
+    <video
+        controls
+        preload="metadata"
+        poster="beardo-thumbnail.jpg">
 
-<div class="info">
+        <source src="beardo.mp4" type="video/mp4">
 
-<h2>Beyond Time</h2>
+    </video>
 
-<p>
-Supporting Role • Sci-Fi • Feature Film
-</p>
+    <div class="info">
+        <h2>BEARDO</h2>
+        <p>Music Video • 2026</p>
+    </div>
 
 </div>
-
-</div>
-
 <div class="card">
 
-<img src="film1.jpg">
+    <video
+        controls
+        preload="metadata"
+        poster="nooree-thumbnail.jpg">
 
-<div class="info">
+        <source src="nooree.mp4" type="video/mp4">
 
-<h2>Silent Road</h2>
+    </video>
 
-<p>
-Short Film • Festival Selection
-</p>
+    <div class="info">
+        <h2>NOOREE</h2>
+        <p>Music Video • 2026</p>
+    </div>
 
 </div>
-
-</div>
-
-</div>
-
 </section>
 
 <section>
@@ -509,7 +543,29 @@ Short Film • Festival Selection
 
 <div class="gallery">
 
-<img src="film1.jpg">
+<div class="card">
+
+    <div class="video-container">
+        <iframe
+            src="https://www.youtube.com/embed/dF2FQRVX_js"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="info">
+
+        <h2>Echoes</h2>
+
+        <p>
+            Lead Actor • Drama • 2026
+        </p>
+
+    </div>
+
+</div>
 <img src="film1.jpg">
 <img src="film1.jpg">
 <img src="film1.jpg">
@@ -525,7 +581,69 @@ Short Film • Festival Selection
 © 2026 lost & Found
 
 </footer>
+<script>
+    function openVideo(src){
 
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("myVideo");
+    const source = document.getElementById("videoSource");
+
+    source.src = src;
+    video.load();
+
+    modal.style.display = "flex";
+
+    video.play();
+}
+
+function closeVideo(){
+
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("myVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    modal.style.display = "none";
+}
+
+document.getElementById("videoModal").addEventListener("click",function(e){
+
+    if(e.target.id==="videoModal"){
+        closeVideo();
+    }
+
+});
+
+document.querySelectorAll(".video-wrapper").forEach(wrapper=>{
+
+    const video=wrapper.querySelector(".film-video");
+    const thumb=wrapper.querySelector(".thumbnail");
+    const btn=wrapper.querySelector(".play-btn");
+
+    btn.addEventListener("click",()=>{
+
+        thumb.style.display="none";
+        btn.style.display="none";
+
+        video.style.display="block";
+
+        video.play();
+
+    });
+
+    video.addEventListener("ended",()=>{
+
+        video.style.display="none";
+
+        thumb.style.display="block";
+
+        btn.style.display="block";
+
+    });
+
+});
+</script>
 <script src="script.js"></script>
 
 </body>
